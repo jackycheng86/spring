@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
  * 2017/12/23
  **/
 @Component
-public class FileSystemstorageServiceImpl {
+public class FileSystemstorageServiceImpl implements FileSystemStorageService{
 }
