@@ -14,7 +14,6 @@ import java.util.Objects;
 public class FileEntity {
     private String fileid;
     private String filename;
-    private String filerealname;
     private String filetype;
     private byte[] filedata;
 
@@ -38,15 +37,6 @@ public class FileEntity {
         this.filename = filename;
     }
 
-    @Basic
-    @Column(name = "filerealname", nullable = false, length = 200)
-    public String getFilerealname() {
-        return filerealname;
-    }
-
-    public void setFilerealname(String filerealname) {
-        this.filerealname = filerealname;
-    }
 
     @Basic
     @Column(name = "filetype", nullable = false, length = 50)
@@ -75,7 +65,6 @@ public class FileEntity {
         FileEntity that = (FileEntity) o;
         return Objects.equals(fileid, that.fileid) &&
                 Objects.equals(filename, that.filename) &&
-                Objects.equals(filerealname, that.filerealname) &&
                 Objects.equals(filetype, that.filetype) &&
                 Arrays.equals(filedata, that.filedata);
     }
@@ -83,7 +72,7 @@ public class FileEntity {
     @Override
     public int hashCode() {
 
-        int result = Objects.hash(fileid, filename, filerealname, filetype);
+        int result = Objects.hash(fileid, filename, filetype);
         result = 31 * result + Arrays.hashCode(filedata);
         return result;
     }

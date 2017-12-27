@@ -53,7 +53,7 @@ public class RepositoryConfig {
                 .dataSource(druidDataSource)
                 .properties(getVendorProperties(druidDataSource))
                 .packages("com.spring.entity")
-                .persistenceUnit("persistenceUnitMaterial")
+                .persistenceUnit("persistenceUnitSpring")
                 .build();
     }
 

@@ -2,6 +2,9 @@ package com.spring.service;
 
 import org.springframework.stereotype.Component;
 
+import java.nio.file.Path;
+import java.util.stream.Stream;
+
 /**
  * com.spring.service
  * cj
@@ -9,4 +12,18 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class FileSystemstorageServiceImpl implements FileSystemStorageService{
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public Stream<Path> loadAll() {
+        return null;
+    }
+
+    @Override
+    public Path load(String filename) {
+        return null;
+    }
 }

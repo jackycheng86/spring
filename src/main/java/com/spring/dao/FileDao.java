@@ -5,8 +5,8 @@ import com.spring.entity.FileEntity;
 import org.springframework.stereotype.Repository;
 
 /**
- * com.spring.dao
- * cj
+ * @ com.spring.dao
+ * @author cj
  * 2017/12/23
  **/
 @Repository
