@@ -3,7 +3,7 @@ package com.spring.service;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
-import java.util.stream.Stream;
+import java.util.List;
 
 /**
  * com.spring.service
@@ -18,7 +18,7 @@ public class FileSystemstorageServiceImpl implements FileSystemStorageService{
     }
 
     @Override
-    public Stream<Path> loadAll() {
+    public List<Path> loadAll() {
         return null;
     }
 

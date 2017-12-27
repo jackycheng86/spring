@@ -1,7 +1,7 @@
 package com.spring.service;
 
 import java.nio.file.Path;
-import java.util.stream.Stream;
+import java.util.List;
 
 /**
  * com.spring.service
@@ -9,9 +9,13 @@ import java.util.stream.Stream;
  * 2017/12/23
  **/
 public interface FileSystemStorageService {
-    void init();
 
-    Stream<Path> loadAll();
+    /**
+     * 初始化
+     */
+    public void init();
 
-    Path load(String filename);
+    public List<Path> loadAll();
+
+    public Path load(String filename);
 }

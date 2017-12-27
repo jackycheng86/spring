@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * com.spring.controller
- * cj
- * 2017/12/23
+ * @author jacky
+ * @date 2017/12/23
  **/
 @Controller
 @RequestMapping("/file")
