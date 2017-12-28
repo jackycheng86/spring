@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  * com.spring.entity
- * cj
+ * @author jacky
  * 2017/12/23
  **/
 @Entity
