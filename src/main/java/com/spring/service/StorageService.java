@@ -1,16 +1,28 @@
 package com.spring.service;
 
+import com.spring.entity.FileEntity;
 import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 public interface StorageService {
 
-    void store(MultipartFile file);
+    /**
+     * 获取所有文件列表
+     * @return
+     */
+    List<FileEntity> findAll();
 
-    Resource loadAsResource(String filename);
+    /**
+     * 加载指定的文件
+     * @param fileName
+     * @return
+     */
+    Resource loadAsResource(String fileName);
 
-    void delete();
-
-    void deleteAll();
-
+    /**
+     * 保存文件
+     * @param fileEntity
+     */
+    void store(FileEntity fileEntity);
 }

@@ -1,11 +1,14 @@
 package com.spring.entity;
 
 import javax.persistence.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Objects;
 
 /**
  * com.spring.entity
+ *
  * @author jacky
  * 2017/12/23
  **/
@@ -75,5 +78,17 @@ public class FileEntity {
         int result = Objects.hash(fileid, filename, filetype);
         result = 31 * result + Arrays.hashCode(filedata);
         return result;
+    }
+
+    /**
+     * 将byte数组转为stream
+     *
+     * @return
+     */
+    public InputStream getInputStream() {
+        if (filedata != null) {
+            return new ByteArrayInputStream(filedata);
+        }
+        return null;
     }
 }

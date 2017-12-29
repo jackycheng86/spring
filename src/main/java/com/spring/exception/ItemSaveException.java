@@ -1,11 +1,11 @@
 package com.spring.exception;
 
 /**
- * com.spring.exception
- * @author jacky
- * @date 2017/12/25
- **/
-public class ItemNotFoundException extends GenericException{
+ * @author jackycheng
+ * @date 2017-12-29-下午5:24
+ */
+
+public class ItemSaveException extends GenericException{
     /**
      * Constructs a new runtime exception with the specified detail message.
      * The cause is not initialized, and may subsequently be initialized by a
@@ -14,7 +14,7 @@ public class ItemNotFoundException extends GenericException{
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public ItemNotFoundException(String message) {
+    public ItemSaveException(String message) {
         super(message);
     }
 
@@ -32,7 +32,7 @@ public class ItemNotFoundException extends GenericException{
      *                unknown.)
      * @since 1.4
      */
-    public ItemNotFoundException(String message, Throwable cause) {
+    public ItemSaveException(String message, Throwable cause) {
         super(message, cause);
     }
 }
