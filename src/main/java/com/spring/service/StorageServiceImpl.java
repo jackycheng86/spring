@@ -1,10 +1,10 @@
 package com.spring.service;
 
 import com.spring.entity.FileEntity;
-import com.spring.exception.ItemSaveException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -39,26 +39,23 @@ public class StorageServiceImpl  implements StorageService{
     /**
      * 加载指定的文件
      *
+     * @param fileId
      * @param fileName
      * @return
      */
     @Override
-    public Resource loadAsResource(String fileName) {
-
+    public Resource loadAsResource(String fileId,String fileName) {
+        Resource file=fileSystemStorageService.load();
         return null;
     }
 
     /**
      * 保存文件
      *
-     * @param fileEntity
+     * @param file
      */
     @Override
-    public void store(FileEntity fileEntity) {
-        try {
-            fileService.save(fileEntity);
-        } catch (Exception e) {
-            throw new ItemSaveException(fileEntity.getFilename()+"保存数据库失败！",e.getCause());
-        }
+    public void store(MultipartFile file) {
+
     }
 }
