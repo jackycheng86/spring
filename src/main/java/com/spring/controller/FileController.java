@@ -4,6 +4,7 @@ import com.spring.entity.FileEntity;
 import com.spring.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,9 +36,10 @@ public class FileController {
     public String main(Model model) {
         List<FileEntity> files = storageService.findAll();
         if (files != null && files.size() > 0) {
+            System.out.println(files.size());
             List<String> paths = new ArrayList<>();
             files.forEach(fileEntity -> paths.add(MvcUriComponentsBuilder.fromMethodName(FileController.class, "load",
-                    fileEntity.getFiletype(),fileEntity.getFilename()+fileEntity.getFiletype()).build().toString()));
+                    fileEntity.getFiletype(), fileEntity.getFilename() +"."+ fileEntity.getFileext()).build().toString()));
             model.addAttribute("files", paths);
         }
         return "upload";
@@ -46,8 +48,9 @@ public class FileController {
     @GetMapping("/{fileId}/{fileName:.+}")
     @ResponseBody
     public ResponseEntity<Resource> load(@PathVariable String fileId, @PathVariable String fileName) {
-        Resource file=storageService.loadAsResource();
-        return null;
+        Resource file = storageService.loadAsResource(fileId, fileName);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
     @PostMapping

@@ -32,6 +32,6 @@ public class FileServiceImpl extends BaseServiceImpl<FileEntity, String> impleme
      */
     @Override
     public List<FileEntity> findAllFile() {
-        return null;
+        return fileDao.findAllFile();
     }
 }

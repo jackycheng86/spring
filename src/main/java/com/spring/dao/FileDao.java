@@ -15,6 +15,6 @@ import java.util.List;
 @Repository
 public interface FileDao extends MyBaseRepository<FileEntity,String>{
 
-    @Query("select f.fileid,f.filename,f.filetype from FileEntity f")
+    @Query("select new FileEntity (f.fileid,f.filename,f.filetype,f.fileext)from FileEntity f")
     List<FileEntity> findAllFile();
 }

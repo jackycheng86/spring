@@ -3,26 +3,34 @@
     <title>文件上传</title>
 </head>
 <body>
-<h1>Hello ${w}!</h1>
 <#if message??>
     <h2>${message}!</h2>
 </#if>
 <div>
     <form method="POST" enctype="multipart/form-data" action="/file">
         <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            <tr>
+                <td>File to upload:</td>
+                <td><input type="file" name="file"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Upload"/></td>
+            </tr>
         </table>
     </form>
 </div>
 
 <div>
     <ul>
-        <#list files as file>
+        <#if files??>
+            <#list files as file>
         <li>
             <a href="${file}">${file}</a>
         </li>
-        </#list>
+            </#list>
+        </#if>
+
     </ul>
 </div>
 </body>

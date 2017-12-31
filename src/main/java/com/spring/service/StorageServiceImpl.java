@@ -1,11 +1,18 @@
 package com.spring.service;
 
 import com.spring.entity.FileEntity;
+import com.spring.exception.GenericException;
+import com.spring.exception.ItemNotFoundException;
+import com.spring.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -14,7 +21,7 @@ import java.util.List;
  */
 
 @Component
-public class StorageServiceImpl  implements StorageService{
+public class StorageServiceImpl implements StorageService {
 
     private FileSystemStorageService fileSystemStorageService;
 
@@ -44,9 +51,25 @@ public class StorageServiceImpl  implements StorageService{
      * @return
      */
     @Override
-    public Resource loadAsResource(String fileId,String fileName) {
-        Resource file=fileSystemStorageService.load();
-        return null;
+    public Resource loadAsResource(String fileId, String fileName) {
+        String[] fileProperties = fileName.split("\\.");
+        String fileext = fileProperties[1];
+        try {
+            Path file = fileSystemStorageService.load(fileId + fileext);
+            Resource resource = new UrlResource(file.toUri());
+            if (!resource.exists() && !resource.isReadable()) {
+                FileEntity fileEntity = fileService.findOne(fileId);
+                if (fileEntity != null) {
+                    resource = new ByteArrayResource(fileEntity.getFiledata());
+                    fileSystemStorageService.store(fileEntity);
+                } else {
+                    throw new ItemNotFoundException("数据库未找到该文件，文件编号为：" + fileId);
+                }
+            }
+            return resource;
+        } catch (Exception e) {
+            throw new GenericException("获取指定文件失败！", e.getCause());
+        }
     }
 
     /**
@@ -56,6 +79,21 @@ public class StorageServiceImpl  implements StorageService{
      */
     @Override
     public void store(MultipartFile file) {
-
+        FileEntity fileEntity = new FileEntity();
+        fileEntity.setFileid(CommonUtil.getUuid());
+        fileEntity.setFiletype(file.getContentType());
+        String[] fileProperties = file.getOriginalFilename().split("\\.");
+        fileEntity.setFileext(fileProperties[1]);
+        fileEntity.setFilename(fileProperties[0]);
+        try {
+            fileEntity.setFiledata(file.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            fileService.save(fileEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
