@@ -3,6 +3,7 @@ package com.spring;
 import com.github.javafaker.Faker;
 import com.spring.entity.FileEntity;
 import com.spring.entity.UserEntity;
+import com.spring.service.FileSystemStorageService;
 import com.spring.service.StorageService;
 import com.spring.service.UserService;
 import com.spring.util.CommonUtil;
@@ -23,6 +24,8 @@ public class ApplicationTests {
     private UserService userService;
     @Autowired
     private StorageService storageService;
+    @Autowired
+    private FileSystemStorageService fileSystemStorageService;
 
 	@Test
 	public void contextLoads() {
@@ -44,12 +47,13 @@ public class ApplicationTests {
 
     @Test
     public void fileTest(){
-        List<FileEntity> files = storageService.findAll();
-        if (files != null && files.size() > 0) {
-            System.out.println(files.size());
-            System.out.println(files.get(0).getFilename());
-            files.forEach((file) -> System.out.println(file.getFilename()));
-        }
+	    fileSystemStorageService.init();
+//        List<FileEntity> files = storageService.findAll();
+//        if (files != null && files.size() > 0) {
+//            System.out.println(files.size());
+//            System.out.println(files.get(0).getFilename());
+//            files.forEach((file) -> System.out.println(file.getFilename()));
+//        }
     }
 
     @Test

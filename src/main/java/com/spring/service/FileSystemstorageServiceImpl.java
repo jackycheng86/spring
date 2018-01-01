@@ -34,8 +34,10 @@ public class FileSystemstorageServiceImpl implements FileSystemStorageService {
     @Override
     public void init() {
         try {
-            Files.createDirectories(rootLocation);
-        } catch (IOException e) {
+            if (!Files.isDirectory(rootLocation)) {
+                Files.createDirectories(rootLocation);
+            }
+        } catch (Exception e) {
             throw new GenericException("不能初始化存储位置", e);
         }
     }
@@ -48,6 +50,7 @@ public class FileSystemstorageServiceImpl implements FileSystemStorageService {
      */
     @Override
     public Path load(String filename) {
+        this.init();
         return rootLocation.resolve(filename);
     }
 
@@ -59,7 +62,7 @@ public class FileSystemstorageServiceImpl implements FileSystemStorageService {
     @Override
     public void store(FileEntity fileEntity) {
         try {
-            String fileName = fileEntity.getFileid() + fileEntity.getFiletype();
+            String fileName = fileEntity.getFileid() + "." + fileEntity.getFileext();
             if (fileEntity.getInputStream() != null) {
                 Files.copy(fileEntity.getInputStream(), rootLocation.resolve(fileName),
                         StandardCopyOption.REPLACE_EXISTING);

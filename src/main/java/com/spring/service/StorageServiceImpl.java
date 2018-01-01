@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -55,18 +56,21 @@ public class StorageServiceImpl implements StorageService {
         String[] fileProperties = fileName.split("\\.");
         String fileext = fileProperties[1];
         try {
-            Path file = fileSystemStorageService.load(fileId + fileext);
-            Resource resource = new UrlResource(file.toUri());
-            if (!resource.exists() && !resource.isReadable()) {
+            Path file = fileSystemStorageService.load(fileId + "." + fileext);
+            Resource resource = null;
+            if (Files.exists(file)) {
+                resource = new UrlResource(file.toUri());
+                return resource;
+            } else {
                 FileEntity fileEntity = fileService.findOne(fileId);
                 if (fileEntity != null) {
                     resource = new ByteArrayResource(fileEntity.getFiledata());
                     fileSystemStorageService.store(fileEntity);
+                    return resource;
                 } else {
                     throw new ItemNotFoundException("数据库未找到该文件，文件编号为：" + fileId);
                 }
             }
-            return resource;
         } catch (Exception e) {
             throw new GenericException("获取指定文件失败！", e.getCause());
         }

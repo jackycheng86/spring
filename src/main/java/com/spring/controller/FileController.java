@@ -39,7 +39,7 @@ public class FileController {
             System.out.println(files.size());
             List<String> paths = new ArrayList<>();
             files.forEach(fileEntity -> paths.add(MvcUriComponentsBuilder.fromMethodName(FileController.class, "load",
-                    fileEntity.getFiletype(), fileEntity.getFilename() +"."+ fileEntity.getFileext()).build().toString()));
+                    fileEntity.getFileid(), fileEntity.getFilename() +"."+ fileEntity.getFileext()).build().toString()));
             model.addAttribute("files", paths);
         }
         return "upload";
@@ -50,7 +50,7 @@ public class FileController {
     public ResponseEntity<Resource> load(@PathVariable String fileId, @PathVariable String fileName) {
         Resource file = storageService.loadAsResource(fileId, fileName);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+                "attachment; filename=\"" + fileName + "\"").body(file);
     }
 
     @PostMapping
