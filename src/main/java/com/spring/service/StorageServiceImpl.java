@@ -19,6 +19,9 @@ import java.util.List;
 /**
  * @author jackycheng
  * @date 2017-12-29-下午3:54
+ *
+ * 作为文件处理的抽象实现供Controller调用
+ *
  */
 
 @Component

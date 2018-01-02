@@ -14,6 +14,9 @@ import java.util.List;
  *
  * @author jacky
  * @date 2017/12/23
+ *
+ * 与数据库交互实现数据库层面的文件读写
+ *
  **/
 @Service
 @Transactional(readOnly = true)

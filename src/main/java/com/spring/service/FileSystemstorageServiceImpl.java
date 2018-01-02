@@ -17,6 +17,9 @@ import java.nio.file.StandardCopyOption;
  *
  * @author jacky
  * @date 2017/12/23
+ *
+ * 与磁盘交互实现磁盘上的文件读写
+ *
  **/
 @Component
 public class FileSystemstorageServiceImpl implements FileSystemStorageService {
@@ -34,6 +37,7 @@ public class FileSystemstorageServiceImpl implements FileSystemStorageService {
     @Override
     public void init() {
         try {
+            //判断文件夹是否存在，不存在则创建文件夹
             if (!Files.isDirectory(rootLocation)) {
                 Files.createDirectories(rootLocation);
             }
@@ -64,6 +68,7 @@ public class FileSystemstorageServiceImpl implements FileSystemStorageService {
         try {
             String fileName = fileEntity.getFileid() + "." + fileEntity.getFileext();
             if (fileEntity.getInputStream() != null) {
+                //利用nio将文件从二进制流写入磁盘文件中
                 Files.copy(fileEntity.getInputStream(), rootLocation.resolve(fileName),
                         StandardCopyOption.REPLACE_EXISTING);
             }

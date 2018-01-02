@@ -15,6 +15,10 @@ import java.util.List;
 @Repository
 public interface FileDao extends MyBaseRepository<FileEntity,String>{
 
+    /**
+     * 只查询文件名、文件id、文件类型不加载具体的文件内容
+     * @return
+     */
     @Query("select new FileEntity (f.fileid,f.filename,f.filetype,f.fileext)from FileEntity f")
     List<FileEntity> findAllFile();
 }

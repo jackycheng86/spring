@@ -5,6 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author jackycheng
  * @date 2017-12-29-下午3:56
+ *
+ * 文件上传配置
  */
 
 @ConfigurationProperties("storage")
