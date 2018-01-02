@@ -1,6 +1,7 @@
 package com.spring.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author jackycheng
@@ -8,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * 文件上传配置
  */
-
+@Configuration
 @ConfigurationProperties("storage")
 public class SpringConfig {
     private String location = "/tmp/files";
