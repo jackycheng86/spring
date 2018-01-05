@@ -7,7 +7,7 @@
     </appender>
 
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/tmp/logs/myp2c-main.log</file>
+        <file>/tmp/logs/spring.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>/tmp/logs/spring.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 超过30天的备份文件会被删除 -->
@@ -20,7 +20,7 @@
     </appender>
 
     <!-- project default level -->
-    <logger name="com.hw" level="DEBUG" />
+    <logger name="com.spring" level="DEBUG" />
 
     <!--log4jdbc -->
     <logger name="jdbc.sqltiming" level="INFO"/>

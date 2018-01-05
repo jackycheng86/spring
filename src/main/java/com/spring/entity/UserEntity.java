@@ -13,6 +13,7 @@ import java.util.Objects;
 public class UserEntity {
     private String userid;
     private String username;
+    private String userpwd;
     private String realname;
 
     @Id
@@ -26,13 +27,23 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "username", nullable = true, length = 50)
+    @Column(name = "username", nullable = false, length = 50)
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Basic
+    @Column(name = "userpwd", nullable = false, length = 50)
+    public String getUserpwd() {
+        return userpwd;
+    }
+
+    public void setUserpwd(String userpwd) {
+        this.userpwd = userpwd;
     }
 
     @Basic
@@ -52,12 +63,13 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
         return Objects.equals(userid, that.userid) &&
                 Objects.equals(username, that.username) &&
+                Objects.equals(userpwd, that.userpwd) &&
                 Objects.equals(realname, that.realname);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(userid, username, realname);
+        return Objects.hash(userid, username, userpwd, realname);
     }
 }
