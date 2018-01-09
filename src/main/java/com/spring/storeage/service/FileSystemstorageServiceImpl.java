@@ -1,7 +1,7 @@
-package com.spring.service;
+package com.spring.storeage.service;
 
 import com.spring.config.SpringConfig;
-import com.spring.entity.FileEntity;
+import com.spring.storeage.entity.FileEntity;
 import com.spring.exception.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

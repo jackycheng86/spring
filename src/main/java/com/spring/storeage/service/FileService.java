@@ -1,7 +1,7 @@
-package com.spring.service;
+package com.spring.storeage.service;
 
 import com.spring.common.service.BaseService;
-import com.spring.entity.FileEntity;
+import com.spring.storeage.entity.FileEntity;
 
 import java.util.List;
 

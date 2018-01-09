@@ -25,7 +25,7 @@ import java.util.Map;
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager",
-        basePackages = {"com.spring.dao"})
+        basePackages = {"com.spring.*.dao"})
 public class RepositoryConfig {
 
     @Autowired
@@ -52,7 +52,7 @@ public class RepositoryConfig {
         return builder
                 .dataSource(druidDataSource)
                 .properties(getVendorProperties(druidDataSource))
-                .packages("com.spring.entity")
+                .packages("com.spring.*.entity")
                 .persistenceUnit("persistenceUnitSpring")
                 .build();
     }

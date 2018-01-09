@@ -1,0 +1,22 @@
+
+.bg {
+    position: absolute;
+    width: 1200px;
+    height: 800px;
+    margin: 0 10% ;
+    background-image:url("/imgs/bg.jpg");
+}
+.form{
+    position: relative;
+    margin: 395px 260px;
+}
+.btn{
+    position: relative;
+    margin: -380px 526px;
+    font-family: sans-serif;
+    font-size: 28px;
+}
+a{
+    text-decoration:none;
+    color: #ffffff;
+}

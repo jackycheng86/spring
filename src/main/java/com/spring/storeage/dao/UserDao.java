@@ -1,7 +1,7 @@
-package com.spring.dao;
+package com.spring.storeage.dao;
 
 import com.spring.common.dao.MyBaseRepository;
-import com.spring.entity.UserEntity;
+import com.spring.storeage.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -1,6 +1,6 @@
-package com.spring.service;
+package com.spring.storeage.service;
 
-import com.spring.entity.FileEntity;
+import com.spring.storeage.entity.FileEntity;
 import com.spring.exception.GenericException;
 import com.spring.exception.ItemNotFoundException;
 import com.spring.util.CommonUtil;

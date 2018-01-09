@@ -1,7 +1,7 @@
-package com.spring.service;
+package com.spring.storeage.service;
 
 import com.spring.common.service.BaseServiceImpl;
-import com.spring.entity.UserEntity;
+import com.spring.storeage.entity.UserEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

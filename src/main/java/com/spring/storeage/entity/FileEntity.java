@@ -1,4 +1,4 @@
-package com.spring.entity;
+package com.spring.storeage.entity;
 
 import javax.persistence.*;
 import java.io.ByteArrayInputStream;

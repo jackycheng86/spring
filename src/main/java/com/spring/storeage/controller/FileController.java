@@ -1,7 +1,7 @@
-package com.spring.controller;
+package com.spring.storeage.controller;
 
-import com.spring.entity.FileEntity;
-import com.spring.service.StorageService;
+import com.spring.storeage.service.StorageService;
+import com.spring.storeage.entity.FileEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * com.spring.controller
+ * com.spring.storeage.service.controller
  *
  * @author jacky
  * @date 2017/12/23

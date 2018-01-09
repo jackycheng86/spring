@@ -1,8 +1,8 @@
-package com.spring.service;
+package com.spring.storeage.service;
 
 import com.spring.common.service.BaseServiceImpl;
-import com.spring.dao.FileDao;
-import com.spring.entity.FileEntity;
+import com.spring.storeage.dao.FileDao;
+import com.spring.storeage.entity.FileEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

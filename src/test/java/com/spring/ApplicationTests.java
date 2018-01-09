@@ -1,11 +1,11 @@
 package com.spring;
 
 import com.github.javafaker.Faker;
-import com.spring.entity.FileEntity;
-import com.spring.entity.UserEntity;
-import com.spring.service.FileSystemStorageService;
-import com.spring.service.StorageService;
-import com.spring.service.UserService;
+import com.spring.storeage.service.StorageService;
+import com.spring.storeage.service.UserService;
+import com.spring.storeage.entity.FileEntity;
+import com.spring.storeage.entity.UserEntity;
+import com.spring.storeage.service.FileSystemStorageService;
 import com.spring.util.CommonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
