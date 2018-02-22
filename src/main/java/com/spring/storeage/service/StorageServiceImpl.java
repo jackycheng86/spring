@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -77,6 +78,23 @@ public class StorageServiceImpl implements StorageService {
         } catch (Exception e) {
             throw new GenericException("获取指定文件失败！", e.getCause());
         }
+    }
+
+    /**
+     * 加载指定文件
+     *
+     * @param fileName
+     * @return
+     */
+    @Override
+    public Resource loadResource(String fileName) {
+        Path file = fileSystemStorageService.load(fileName);
+        try {
+            return new UrlResource(file.toUri());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

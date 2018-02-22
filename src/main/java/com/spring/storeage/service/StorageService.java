@@ -23,6 +23,13 @@ public interface StorageService {
     Resource loadAsResource(String fileId, String fileName);
 
     /**
+     * 加载指定文件
+     * @param fileName
+     * @return
+     */
+    Resource loadResource(String fileName);
+
+    /**
      * 保存文件
      * @param file
      */

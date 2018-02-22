@@ -1,15 +1,18 @@
 package com.spring.storeage.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.util.Objects;
 
 /**
  * com.spring.entity
- * cj
+ * @author chengjian
  * 2017/12/23
  **/
 @Entity
 @Table(name = "user", schema = "spring", catalog = "")
+@XmlRootElement(name = "user")
+@XmlType(propOrder = {"userid","username","userpwd","realname"})
 public class UserEntity {
     private String userid;
     private String username;
@@ -18,6 +21,7 @@ public class UserEntity {
 
     @Id
     @Column(name = "userid", nullable = false, length = 50)
+    @XmlElement(name = "userid")
     public String getUserid() {
         return userid;
     }
@@ -28,6 +32,7 @@ public class UserEntity {
 
     @Basic
     @Column(name = "username", nullable = false, length = 50)
+    @XmlElement(name = "username")
     public String getUsername() {
         return username;
     }
@@ -38,6 +43,7 @@ public class UserEntity {
 
     @Basic
     @Column(name = "userpwd", nullable = false, length = 50)
+    @XmlElement(name = "userpwd")
     public String getUserpwd() {
         return userpwd;
     }
@@ -48,6 +54,7 @@ public class UserEntity {
 
     @Basic
     @Column(name = "realname", nullable = true, length = 200)
+    @XmlElement(name = "realname")
     public String getRealname() {
         return realname;
     }

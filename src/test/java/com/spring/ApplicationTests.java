@@ -1,18 +1,21 @@
 package com.spring;
 
 import com.github.javafaker.Faker;
-import com.spring.storeage.service.StorageService;
-import com.spring.storeage.service.UserService;
 import com.spring.storeage.entity.FileEntity;
 import com.spring.storeage.entity.UserEntity;
 import com.spring.storeage.service.FileSystemStorageService;
+import com.spring.storeage.service.StorageService;
+import com.spring.storeage.service.UserService;
 import com.spring.util.CommonUtil;
+import com.spring.util.XmlUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -69,5 +72,32 @@ public class ApplicationTests {
         }
 
         files.forEach(n -> System.out.println(n.getFilename()));
+    }
+
+    @Test
+    public void xmlTest(){
+        Faker faker=new Faker(new Locale("zh-CN"));
+        UserEntity user=new UserEntity();
+        user.setUserid(CommonUtil.getUuid());
+        user.setUsername("a001");
+        user.setRealname(faker.name().fullName());
+        String xmlString= XmlUtil.toXmlString(user,UserEntity.class);
+        System.out.println(xmlString);
+        FileEntity fileEntity=new FileEntity();
+        fileEntity.setFileid(user.getUsername());
+        fileEntity.setFileext("xml");
+        fileEntity.setFilename(user.getUsername());
+        fileEntity.setFiledata(xmlString.getBytes());
+        fileSystemStorageService.store(fileEntity);
+        try {
+            String fileContent=new String(Files.readAllBytes(fileSystemStorageService.load("a001.xml")));
+            System.out.println("read from file");
+            System.out.println(fileContent);
+            UserEntity usser1=(UserEntity) XmlUtil.toObject(fileContent,UserEntity.class);
+            System.out.println(usser1.getUsername());
+            System.out.println(usser1.getRealname());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
