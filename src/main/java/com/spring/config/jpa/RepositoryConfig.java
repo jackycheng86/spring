@@ -64,7 +64,7 @@ public class RepositoryConfig {
      */
     private Map<String, String> getVendorProperties(DataSource dataSource) {
         Map<String, String> map = jpaProperties.getHibernateProperties(dataSource);
-        map.put("hibernate.dialect", "org.hibernate.dialect.MySQL57InnoDBDialect");
+        map.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         map.put("hibernate.show_sql", "true");
         return map;
     }

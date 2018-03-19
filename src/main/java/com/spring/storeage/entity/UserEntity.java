@@ -10,7 +10,7 @@ import java.util.Objects;
  * 2017/12/23
  **/
 @Entity
-@Table(name = "user", schema = "spring", catalog = "")
+@Table(name = "user")
 @XmlRootElement(name = "user")
 @XmlType(propOrder = {"userid","username","userpwd","realname"})
 public class UserEntity {

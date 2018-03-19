@@ -13,7 +13,7 @@ import java.util.Objects;
  * 2017/12/23
  **/
 @Entity
-@Table(name = "file", schema = "spring", catalog = "")
+@Table(name = "file")
 public class FileEntity {
     private String fileid;
     private String filename;

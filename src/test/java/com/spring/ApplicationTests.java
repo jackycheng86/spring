@@ -77,22 +77,28 @@ public class ApplicationTests {
     @Test
     public void xmlTest(){
         Faker faker=new Faker(new Locale("zh-CN"));
+        //创建实体对象
         UserEntity user=new UserEntity();
         user.setUserid(CommonUtil.getUuid());
         user.setUsername("a001");
         user.setRealname(faker.name().fullName());
+        //将实体对象转换为xml字符串
         String xmlString= XmlUtil.toXmlString(user,UserEntity.class);
         System.out.println(xmlString);
+        //创建文件实体
         FileEntity fileEntity=new FileEntity();
         fileEntity.setFileid(user.getUsername());
         fileEntity.setFileext("xml");
         fileEntity.setFilename(user.getUsername());
         fileEntity.setFiledata(xmlString.getBytes());
+        //将xml字符串保存到相应的xml文件中
         fileSystemStorageService.store(fileEntity);
         try {
+            //测试从xml文件中读取xml字符串
             String fileContent=new String(Files.readAllBytes(fileSystemStorageService.load("a001.xml")));
             System.out.println("read from file");
             System.out.println(fileContent);
+            //将读取到的xml字符串转化成实体
             UserEntity usser1=(UserEntity) XmlUtil.toObject(fileContent,UserEntity.class);
             System.out.println(usser1.getUsername());
             System.out.println(usser1.getRealname());
