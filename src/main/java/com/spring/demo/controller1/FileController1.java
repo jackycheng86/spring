@@ -1,8 +1,7 @@
 package com.spring.demo.controller1;
 
-import com.spring.demo.controller.FileController;
-import com.spring.demo.entity.FileEntity;
-import com.spring.demo.service.StorageService;
+import com.spring.demo.entity1.FileEntity;
+import com.spring.demo.service1.StorageService1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -27,10 +26,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/file1")
 public class FileController1 {
-    private StorageService storageService;
+    private StorageService1 storageService;
 
     @Autowired
-    public FileController1(StorageService storageService) {
+    public FileController1(StorageService1 storageService) {
         this.storageService = storageService;
     }
 
@@ -41,7 +40,7 @@ public class FileController1 {
             List<String> paths = new ArrayList<>();
             //lambda表达式遍历list
             //利用MvcUriComponentsBuilder自动生成url
-            files.forEach(fileEntity -> paths.add(MvcUriComponentsBuilder.fromMethodName(FileController.class, "load",
+            files.forEach(fileEntity -> paths.add(MvcUriComponentsBuilder.fromMethodName(FileController1.class, "load",
                     fileEntity.getFileid(), fileEntity.getFilename() +"."+ fileEntity.getFileext()).build().toString()));
             model.addAttribute("files", paths);
         }
