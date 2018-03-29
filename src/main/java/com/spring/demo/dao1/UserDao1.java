@@ -1,7 +1,7 @@
-package com.spring.storeage.dao;
+package com.spring.demo.dao1;
 
 import com.spring.common.dao.MyBaseRepository;
-import com.spring.storeage.entity.UserEntity;
+import com.spring.demo.entity1.UserEntity;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * 2017/12/23
  **/
 @Repository
-public interface UserDao extends MyBaseRepository<UserEntity, String> {
+public interface UserDao1 extends MyBaseRepository<UserEntity, String> {
 }

@@ -1,11 +1,11 @@
 package com.spring;
 
 import com.github.javafaker.Faker;
-import com.spring.storeage.entity.FileEntity;
-import com.spring.storeage.entity.UserEntity;
-import com.spring.storeage.service.FileSystemStorageService;
-import com.spring.storeage.service.StorageService;
-import com.spring.storeage.service.UserService;
+import com.spring.demo.entity.FileEntity;
+import com.spring.demo.entity.UserEntity;
+import com.spring.demo.service.FileSystemStorageService;
+import com.spring.demo.service.StorageService;
+import com.spring.demo.service.UserService;
 import com.spring.util.CommonUtil;
 import com.spring.util.XmlUtil;
 import org.junit.Test;

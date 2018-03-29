@@ -1,6 +1,6 @@
-package com.spring.storeage.service;
+package com.spring.demo.service;
 
-import com.spring.storeage.entity.FileEntity;
+import com.spring.demo.entity.FileEntity;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,7 +1,7 @@
-package com.spring.storeage.service;
+package com.spring.demo.service;
 
 import com.spring.common.service.BaseService;
-import com.spring.storeage.entity.UserEntity;
+import com.spring.demo.entity.UserEntity;
 
 /**
  * com.spring.service

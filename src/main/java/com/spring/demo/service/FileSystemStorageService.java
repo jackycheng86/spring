@@ -1,6 +1,6 @@
-package com.spring.storeage.service;
+package com.spring.demo.service;
 
-import com.spring.storeage.entity.FileEntity;
+import com.spring.demo.entity.FileEntity;
 
 import java.nio.file.Path;
 

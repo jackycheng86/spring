@@ -5,19 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-public class DruidDataSourceConfiguration {
+public class DruidDataSource1Configuration {
     @Autowired
-    private DruidDataSourceProperties properties;
+    private DruidDataSource1Properties properties;
 
-    @Bean(name = "druidDataSource", initMethod = "init", destroyMethod = "close")
-    @Primary
-    @Qualifier("druidDataSource")
+    @Bean(name = "druidDataSource1", initMethod = "init", destroyMethod = "close")
+    @Qualifier("druidDataSource1")
     public DataSource dataSource() throws Exception {
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setUrl(properties.getUrl());

@@ -1,7 +1,7 @@
-package com.spring.storeage.dao;
+package com.spring.demo.dao;
 
 import com.spring.common.dao.MyBaseRepository;
-import com.spring.storeage.entity.FileEntity;
+import com.spring.demo.entity.FileEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

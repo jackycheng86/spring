@@ -1,8 +1,8 @@
-package com.spring.storeage.service;
+package com.spring.demo.service1;
 
 import com.spring.common.service.BaseServiceImpl;
-import com.spring.storeage.dao.FileDao;
-import com.spring.storeage.entity.FileEntity;
+import com.spring.demo.dao1.FileDao1;
+import com.spring.demo.entity1.FileEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,12 +19,12 @@ import java.util.List;
  *
  **/
 @Service
-@Transactional(readOnly = true)
-public class FileServiceImpl extends BaseServiceImpl<FileEntity, String> implements FileService {
-    private FileDao fileDao;
+@Transactional(readOnly = true,transactionManager = "transactionManager1")
+public class FileServiceImpl1 extends BaseServiceImpl<FileEntity, String> implements FileService1 {
+    private FileDao1 fileDao;
 
     @Autowired
-    public FileServiceImpl(FileDao fileDao) {
+    public FileServiceImpl1(FileDao1 fileDao) {
         this.fileDao = fileDao;
     }
 

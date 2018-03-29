@@ -1,4 +1,4 @@
-package com.spring.storeage.entity;
+package com.spring.demo.entity;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
