@@ -6,10 +6,12 @@ import com.spring.demo.entity.UserEntity;
 import com.spring.demo.service.FileSystemStorageService;
 import com.spring.demo.service.StorageService;
 import com.spring.demo.service.UserService;
+import com.spring.demo.service1.UserService1;
 import com.spring.util.CommonUtil;
 import com.spring.util.XmlUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -27,6 +29,8 @@ public class ApplicationTests {
     @Autowired
     private UserService userService;
     @Autowired
+    private UserService1 userService1;
+    @Autowired
     private StorageService storageService;
     @Autowired
     private FileSystemStorageService fileSystemStorageService;
@@ -40,10 +44,14 @@ public class ApplicationTests {
         Faker faker=new Faker(new Locale("zh-CN"));
         UserEntity user=new UserEntity();
         user.setUserid(CommonUtil.getUuid());
+        user.setUserpwd("123456");
         user.setUsername("a001");
         user.setRealname(faker.name().fullName());
+        com.spring.demo.entity1.UserEntity entity1=new com.spring.demo.entity1.UserEntity();
+        BeanUtils.copyProperties(user,entity1);
         try {
             userService.save(user);
+            userService1.save(entity1);
         } catch (Exception e) {
             e.printStackTrace();
         }
