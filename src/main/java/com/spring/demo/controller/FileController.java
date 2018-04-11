@@ -1,7 +1,8 @@
 package com.spring.demo.controller;
 
-import com.spring.demo.service.StorageService;
+import com.google.common.base.Strings;
 import com.spring.demo.entity.FileEntity;
+import com.spring.demo.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -34,7 +35,10 @@ public class FileController {
     }
 
     @GetMapping
-    public String main(Model model) {
+    public String main(Model model,@RequestParam(required = true) String dn) {
+        if(!Strings.isNullOrEmpty(dn)){
+            System.out.println(dn);
+        }
         List<FileEntity> files = storageService.findAll();
         if (files != null && files.size() > 0) {
             List<String> paths = new ArrayList<>();
