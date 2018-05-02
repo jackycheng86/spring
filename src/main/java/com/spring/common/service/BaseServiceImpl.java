@@ -62,7 +62,7 @@ public abstract class BaseServiceImpl<T,ID extends Serializable> implements Base
      */
     @Override
     public T findOne(ID va1) throws Exception {
-        return myBaseRepository.findOne(va1);
+        return myBaseRepository.getOne(va1);
     }
 
     /**
@@ -95,7 +95,7 @@ public abstract class BaseServiceImpl<T,ID extends Serializable> implements Base
      */
     @Override
     public void delete(ID va1) throws Exception {
-        myBaseRepository.delete(va1);
+        myBaseRepository.delete(findOne(va1));
     }
 
 

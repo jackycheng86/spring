@@ -1,8 +1,8 @@
 package com.spring;
 
-import com.spring.config.tomcat.Myp2cTomcatEmbeddedServletContainerFactory;
+import com.spring.config.tomcat.Myp2cTomcatCustomizationBean;
 import org.apache.catalina.connector.Connector;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,10 +16,9 @@ import java.nio.charset.Charset;
 @Configuration
 public class TomcatInitializer {
 
-
     @Bean
-    public EmbeddedServletContainerFactory servletContainer() {
-        Myp2cTomcatEmbeddedServletContainerFactory tomcat = new Myp2cTomcatEmbeddedServletContainerFactory();
+    public TomcatServletWebServerFactory serverFactory(){
+        Myp2cTomcatCustomizationBean tomcat=new Myp2cTomcatCustomizationBean();
         tomcat.setUriEncoding(Charset.forName("UTF-8"));
         tomcat.addAdditionalTomcatConnectors(createNioConnector());
         return tomcat;

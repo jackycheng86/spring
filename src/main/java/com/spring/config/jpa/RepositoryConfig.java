@@ -2,6 +2,7 @@ package com.spring.config.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -51,7 +52,7 @@ public class RepositoryConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(druidDataSource)
-                .properties(getVendorProperties(druidDataSource))
+                .properties(getVendorProperties())
                 .packages("com.spring.*.entity")
                 .persistenceUnit("persistenceUnitSpring")
                 .build();
@@ -59,11 +60,10 @@ public class RepositoryConfig {
 
     /**
      * 通过jpaProperties指定hibernate数据库方言以及在控制台打印sql语句
-     * @param dataSource
      * @return
      */
-    private Map<String, String> getVendorProperties(DataSource dataSource) {
-        Map<String, String> map = jpaProperties.getHibernateProperties(dataSource);
+    private Map<String, Object> getVendorProperties() {
+        Map<String, Object> map = jpaProperties.getHibernateProperties(new HibernateSettings());
         map.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         map.put("hibernate.show_sql", "true");
         return map;
