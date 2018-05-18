@@ -1,7 +1,9 @@
-package com.spring.demo.entity;
+package com.spring.javatest.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,8 +12,6 @@ import java.util.Objects;
  * @author chengjian
  * 2017/12/23
  **/
-@Entity
-@Table(name = "user")
 @XmlRootElement(name = "user")
 @XmlType(propOrder = {"userid","username","userpwd","realname"})
 public class UserEntity implements Serializable {
@@ -20,8 +20,6 @@ public class UserEntity implements Serializable {
     private String userpwd;
     private String realname;
 
-    @Id
-    @Column(name = "userid", nullable = false, length = 50)
     @XmlElement(name = "userid")
     public String getUserid() {
         return userid;
@@ -31,8 +29,6 @@ public class UserEntity implements Serializable {
         this.userid = userid;
     }
 
-    @Basic
-    @Column(name = "username", nullable = false, length = 50)
     @XmlElement(name = "username")
     public String getUsername() {
         return username;
@@ -42,8 +38,6 @@ public class UserEntity implements Serializable {
         this.username = username;
     }
 
-    @Basic
-    @Column(name = "userpwd", nullable = false, length = 50)
     @XmlElement(name = "userpwd")
     public String getUserpwd() {
         return userpwd;
@@ -53,8 +47,6 @@ public class UserEntity implements Serializable {
         this.userpwd = userpwd;
     }
 
-    @Basic
-    @Column(name = "realname", nullable = true, length = 200)
     @XmlElement(name = "realname")
     public String getRealname() {
         return realname;

@@ -7,6 +7,8 @@ import com.spring.demo.service.FileSystemStorageService;
 import com.spring.demo.service.StorageService;
 import com.spring.demo.service.UserService;
 import com.spring.demo.service1.UserService1;
+import com.spring.javatest.io.ObjectInputOutputTest;
+import com.spring.javatest.io.TextInputOutputTest;
 import com.spring.util.CommonUtil;
 import com.spring.util.XmlUtil;
 import org.junit.Test;
@@ -34,6 +36,10 @@ public class ApplicationTests {
     private StorageService storageService;
     @Autowired
     private FileSystemStorageService fileSystemStorageService;
+    @Autowired
+    private ObjectInputOutputTest outPutStreamTest;
+    @Autowired
+    private TextInputOutputTest textInputOutputTest;
 
 	@Test
 	public void contextLoads() {
@@ -113,5 +119,11 @@ public class ApplicationTests {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void javaTestOutPutStream(){
+        //outPutStreamTest.fileOutPutSerializable();
+        textInputOutputTest.bufferedOutputStreamTest();
     }
 }

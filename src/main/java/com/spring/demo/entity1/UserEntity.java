@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Objects;
 @Table(name = "user")
 @XmlRootElement(name = "user")
 @XmlType(propOrder = {"userid","username","userpwd","realname"})
-public class UserEntity {
+public class UserEntity implements Serializable {
     private String userid;
     private String username;
     private String userpwd;
