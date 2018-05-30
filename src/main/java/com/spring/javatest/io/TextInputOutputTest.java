@@ -6,9 +6,7 @@ import com.spring.util.SpringBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author chengjian
@@ -26,8 +24,8 @@ public class TextInputOutputTest {
     /**
      * 使用BufferedOutputStream输出文本到文件
      */
-    public void bufferedOutputStreamTest(String str){
-        String fileName = springBeanFactory.getBean(SpringConfig.class).getLocation() + "buffer";
+    public void bufferedOutputStream(String str){
+        String fileName = springBeanFactory.getBean(SpringConfig.class).getLocation() + "bufferedOutputStream";
         try {
             if(Strings.isNullOrEmpty(str)){
                 str=this.str;
@@ -42,10 +40,10 @@ public class TextInputOutputTest {
     }
 
     /**
-     * 使用
+     * 使用FileOutputStream将文本内容写入文件
      */
     public void fileOutputStream(String str){
-        String fileName = springBeanFactory.getBean(SpringConfig.class).getLocation() + "fileout";
+        String fileName = springBeanFactory.getBean(SpringConfig.class).getLocation() + "fileOutputStream";
         try {
             if(Strings.isNullOrEmpty(str)){
                 str=this.str;
@@ -55,6 +53,23 @@ public class TextInputOutputTest {
             output.flush();
             output.close();
         }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 使用BufferedWriter将文本写入文件
+     * @param str
+     */
+    public void bufferedWriter(String str){
+        String fileName=springBeanFactory.getBean(SpringConfig.class).getLocation()+"bufferedWriter";
+        try {
+            FileWriter fileWriter=new FileWriter(fileName);
+            PrintWriter printWriter=new PrintWriter(new BufferedWriter(fileWriter));
+            printWriter.print(str);
+            printWriter.flush();
+            printWriter.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

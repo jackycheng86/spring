@@ -124,6 +124,7 @@ public class ApplicationTests {
     @Test
     public void javaTestOutPutStream(){
         //outPutStreamTest.fileOutPutSerializable();
-        textInputOutputTest.bufferedOutputStreamTest();
+        //textInputOutputTest.bufferedOutputStream("");
+        textInputOutputTest.bufferedWriter("bufferedWriter测试");
     }
 }
