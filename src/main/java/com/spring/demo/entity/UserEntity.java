@@ -7,18 +7,23 @@ import java.util.Objects;
 
 /**
  * com.spring.entity
+ *
  * @author chengjian
  * 2017/12/23
  **/
 @Entity
 @Table(name = "user")
 @XmlRootElement(name = "user")
-@XmlType(propOrder = {"userid","username","userpwd","realname"})
+@XmlType(propOrder = {"userid", "username", "userpwd", "realname"})
 public class UserEntity implements Serializable {
+
+
     private String userid;
     private String username;
     private String userpwd;
     private String realname;
+
+    public static final String USERENTITY_KEY = "UserEntity";
 
     @Id
     @Column(name = "userid", nullable = false, length = 50)
