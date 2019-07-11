@@ -1,10 +1,8 @@
 package com.spring.quartz.schedule;
 
-import com.hw.wechat.schedule.job.ScheduleJob1;
-import com.hw.wechat.schedule.job.ScheduleJob2;
-import com.hw.wechat.wx.app.service.HwWechatAppService;
-import com.hw.wechat.wx.log.service.HwWechatScheduleLogService;
-import com.hw.wechat.wx.remotecall.service.HwWechatRemoteCallService;
+import com.spring.quartz.book.service.BookService;
+import com.spring.quartz.schedule.job.ScheduleJob1;
+import com.spring.quartz.schedule.job.ScheduleJob2;
 import org.quartz.CronTrigger;
 import org.quartz.JobDataMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
  * 定时任务配置
+ *
  * @author chengjian
  * @date 2019/5/2
  */
@@ -26,27 +25,19 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 public class QuartzSchedulerConfig {
     @Bean(name = "job1DataMap")
     public JobDataMap job1DataMap(
-            @Autowired HwWechatAppService hwWechatAppService,
-            @Autowired HwWechatScheduleLogService hwWechatScheduleLogService,
-            @Autowired HwWechatRemoteCallService remoteCallService
+            @Autowired BookService bookService
     ) {
         JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put("hwWechatAppService", hwWechatAppService);
-        jobDataMap.put("remoteCallService", remoteCallService);
-        jobDataMap.put("hwWechatScheduleLogService", hwWechatScheduleLogService);
+        jobDataMap.put("bookService", bookService);
         return jobDataMap;
     }
 
     @Bean(name = "job2DataMap")
     public JobDataMap job2DataMap(
-            @Autowired HwWechatAppService hwWechatAppService,
-            @Autowired HwWechatScheduleLogService hwWechatScheduleLogService,
-            @Autowired HwWechatRemoteCallService remoteCallService
+            @Autowired BookService bookService
     ) {
         JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put("hwWechatAppService", hwWechatAppService);
-        jobDataMap.put("remoteCallService", remoteCallService);
-        jobDataMap.put("hwWechatScheduleLogService", hwWechatScheduleLogService);
+        jobDataMap.put("bookService", bookService);
         return jobDataMap;
     }
 
@@ -94,12 +85,11 @@ public class QuartzSchedulerConfig {
 
 
     @Bean(name = "quartzScheduler")
-    //public SchedulerFactoryBean schedulerFactoryBean1(@Qualifier("cronTrigger1") CronTrigger simpleTriggerFactoryBean, @Qualifier("cronTrigger2")CronTrigger cronTriggerFactoryBean) {
-        public SchedulerFactoryBean schedulerFactoryBean1(@Qualifier("cronTrigger1") CronTrigger simpleTriggerFactoryBean, @Qualifier("cronTrigger2")CronTrigger cronTriggerFactoryBean) {
+    public SchedulerFactoryBean schedulerFactoryBean1(@Qualifier("cronTrigger1") CronTrigger simpleTriggerFactoryBean, @Qualifier("cronTrigger2") CronTrigger cronTriggerFactoryBean) {
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
         schedulerFactoryBean.setAutoStartup(true);
         schedulerFactoryBean.setBeanName("quartzScheduler1");
-        schedulerFactoryBean.setTriggers(simpleTriggerFactoryBean,cronTriggerFactoryBean);
+        schedulerFactoryBean.setTriggers(simpleTriggerFactoryBean, cronTriggerFactoryBean);
         return schedulerFactoryBean;
     }
 
