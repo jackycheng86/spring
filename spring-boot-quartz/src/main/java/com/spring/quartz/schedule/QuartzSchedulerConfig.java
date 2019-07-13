@@ -68,8 +68,8 @@ public class QuartzSchedulerConfig {
         //simpleTriggerFactoryBean.setStartDelay(3000);
         //simpleTriggerFactoryBean.setRepeatInterval(25000);
         cronTriggerFactoryBean.setBeanName("cronTrigger1");
-        cronTriggerFactoryBean.setStartDelay(6000);
-        cronTriggerFactoryBean.setCronExpression("0 */30 * * * ?");
+        cronTriggerFactoryBean.setStartDelay(1000);
+        cronTriggerFactoryBean.setCronExpression("10/20 * * * * ? ");
         return cronTriggerFactoryBean;
     }
 
@@ -78,8 +78,8 @@ public class QuartzSchedulerConfig {
         CronTriggerFactoryBean cronTriggerFactoryBean = new CronTriggerFactoryBean();
         cronTriggerFactoryBean.setJobDetail(job1DetailFactoryBean.getObject());
         cronTriggerFactoryBean.setBeanName("cronTrigger2");
-        cronTriggerFactoryBean.setStartDelay(30000);
-        cronTriggerFactoryBean.setCronExpression("0 0 */1 * * ?");
+        cronTriggerFactoryBean.setStartDelay(3000);
+        cronTriggerFactoryBean.setCronExpression("10/30 * * * * ? ");
         return cronTriggerFactoryBean;
     }
 

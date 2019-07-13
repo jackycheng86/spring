@@ -4,7 +4,7 @@
     width: 1200px;
     height: 800px;
     margin: 0 10% ;
-    background-image:url("/imgs/bg.jpg");
+    background-image:url("/bg.jpg");
 }
 .form{
     position: relative;
