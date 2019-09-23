@@ -3,7 +3,7 @@ package com.spring.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "book",schema = "book")
 public class BookEntity {
     private String id;
     private String name;
@@ -59,5 +59,16 @@ public class BookEntity {
 
     public void setPublish(String publish) {
         this.publish = publish;
+    }
+
+    @Override
+    public String toString() {
+        return "BookEntity{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", publish='" + publish + '\'' +
+                '}';
     }
 }
