@@ -1,8 +1,6 @@
-package com.spring.quartz.schedule;
+package com.spring.quartz.schedule.jobdetail;
 
 import com.spring.quartz.book.service.BookService;
-import com.spring.quartz.schedule.job.ScheduleJob1;
-import com.spring.quartz.schedule.job.ScheduleJob2;
 import org.quartz.CronTrigger;
 import org.quartz.JobDataMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
  */
 @Configuration
 @EnableScheduling
-public class QuartzSchedulerConfig {
+public class JobDetailQuartzSchedulerConfig {
     @Bean(name = "job1DataMap")
     public JobDataMap job1DataMap(
             @Autowired BookService bookService
@@ -45,7 +43,7 @@ public class QuartzSchedulerConfig {
     public JobDetailFactoryBean jobDetailFactoryBean1(@Qualifier("job1DataMap") JobDataMap job1DataMap) {
         JobDetailFactoryBean jobDetailFactoryBean = new JobDetailFactoryBean();
         jobDetailFactoryBean.setJobDataMap(job1DataMap);
-        jobDetailFactoryBean.setJobClass(ScheduleJob1.class);
+        jobDetailFactoryBean.setJobClass(JobDetailJob1.class);
         jobDetailFactoryBean.setName("job1Factory");
         return jobDetailFactoryBean;
     }
@@ -54,7 +52,7 @@ public class QuartzSchedulerConfig {
     public JobDetailFactoryBean jobDetailFactoryBean2(@Qualifier("job2DataMap") JobDataMap job2DataMap) {
         JobDetailFactoryBean jobDetailFactoryBean = new JobDetailFactoryBean();
         jobDetailFactoryBean.setJobDataMap(job2DataMap);
-        jobDetailFactoryBean.setJobClass(ScheduleJob2.class);
+        jobDetailFactoryBean.setJobClass(JobDetailJob2.class);
         jobDetailFactoryBean.setName("job2Factory");
         return jobDetailFactoryBean;
     }

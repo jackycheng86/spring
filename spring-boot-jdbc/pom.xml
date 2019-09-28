@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.spring</groupId>
-    <artifactId>jdbc</artifactId>
+    <artifactId>spring-boot-jdbc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-jdbc</name>
     <description>jdbc Demo project for Spring Boot</description>

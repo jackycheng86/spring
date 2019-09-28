@@ -1,4 +1,4 @@
-package com.spring.quartz.schedule.job;
+package com.spring.quartz.schedule.jobdetail;
 
 import com.spring.quartz.book.entity.Book;
 import com.spring.quartz.book.service.BookService;
@@ -6,7 +6,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-public class ScheduleJob2 extends QuartzJobBean {
+public class JobDetailJob2 extends QuartzJobBean {
 
     private BookService bookService;
 
