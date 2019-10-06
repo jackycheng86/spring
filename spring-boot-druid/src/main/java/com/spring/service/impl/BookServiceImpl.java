@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true,rollbackFor = Exception.class)
+@Transactional(readOnly = true, rollbackFor = Exception.class)
 public class BookServiceImpl implements BookService {
     private BookDao bookDao;
 
@@ -41,6 +41,6 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Page<BookEntity> findByPage(int pageNo, int pageSize) throws Exception {
-        return bookDao.findAll(PageRequest.of(pageNo,pageSize));
+        return bookDao.findAll(PageRequest.of(pageNo, pageSize));
     }
 }

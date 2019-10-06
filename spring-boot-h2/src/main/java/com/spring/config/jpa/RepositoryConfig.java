@@ -2,6 +2,7 @@ package com.spring.config.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -18,16 +19,14 @@ import javax.sql.DataSource;
 import java.util.Map;
 
 /**
- * jpa基础配置
  *
- * @author chengjian
- * @date 19-3-6
+ *  @author jackycheng
  */
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager",
-        basePackages = {"com.spring.dao"})//指定需要扫描的dao所在包
+        basePackages = {"com.spring.dao"})
 public class RepositoryConfig {
 
     @Autowired
@@ -45,7 +44,6 @@ public class RepositoryConfig {
 
     /**
      * 指定需要扫描的实体包实现与数据库关联
-     *
      * @param builder
      * @return
      */
@@ -54,27 +52,25 @@ public class RepositoryConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(druidDataSource)
-                .properties(getVendorProperties(druidDataSource))
+                .properties(getVendorProperties())
                 .packages("com.spring.entity")
+                .persistenceUnit("persistenceUnitSpring")
                 .build();
     }
 
     /**
      * 通过jpaProperties指定hibernate数据库方言以及在控制台打印sql语句
-     *
-     * @param dataSource
      * @return
      */
-    private Map<String, String> getVendorProperties(DataSource dataSource) {
+    private Map<String, String> getVendorProperties() {
         Map<String, String> map = jpaProperties.getProperties();
-        map.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+        map.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         map.put("hibernate.show_sql", "true");
         return map;
     }
 
     /**
      * 创建事务管理
-     *
      * @param builder
      * @return
      */

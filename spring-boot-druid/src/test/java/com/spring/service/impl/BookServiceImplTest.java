@@ -23,7 +23,7 @@ public class BookServiceImplTest {
 
     @Test
     public void save() {
-        BookEntity bookEntity=new BookEntity();
+        BookEntity bookEntity = new BookEntity();
         bookEntity.setId(UUIDUtil.getUUID32());
         bookEntity.setName("abc");
         bookEntity.setAuthor("abc");
@@ -43,9 +43,9 @@ public class BookServiceImplTest {
     @Test
     public void findAll() {
         try {
-            List<BookEntity> list=bookService.findAll();
+            List<BookEntity> list = bookService.findAll();
             System.out.println(list.size());
-            for (BookEntity entity:list){
+            for (BookEntity entity : list) {
                 System.out.println(entity.toString());
             }
         } catch (Exception e) {
