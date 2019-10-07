@@ -31,3 +31,8 @@ build/
 .vscode/
 spring-boot-druid.iml
 # Created by .ignore support plugin (hsz.mobi)
+src/main/java/com/spring/common/
+src/main/java/com/spring/user/dao/
+src/main/java/com/spring/user/service/
+src/main/resources/static/
+src/main/resources/templates/

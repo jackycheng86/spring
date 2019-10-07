@@ -1,7 +1,6 @@
-package com.spring.entity;
+package com.spring.user.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "user")
@@ -16,7 +15,6 @@ public class UserEntity {
     public String getId() {
         return id;
     }
-
 
     public void setId(String id) {
         this.id = id;
@@ -40,30 +38,14 @@ public class UserEntity {
     public void setLoginPwd(String loginPwd) {
         this.loginPwd = loginPwd;
     }
+
     @Basic
     @Column(name = "userName", length = 100)
     public String getUserName() {
         return userName;
     }
 
-
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getLoginId(), that.getLoginId()) &&
-                Objects.equals(getLoginPwd(), that.getLoginPwd()) &&
-                Objects.equals(getUserName(), that.getUserName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getLoginId(), getLoginPwd(), getUserName());
     }
 }

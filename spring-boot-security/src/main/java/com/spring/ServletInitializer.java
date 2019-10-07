@@ -1,4 +1,4 @@
-package com.spring.security;
+package com.spring;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

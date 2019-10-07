@@ -1,2 +1,2 @@
 ##说明
-演示spingboot使用security
+演示spingboot使用spring security
