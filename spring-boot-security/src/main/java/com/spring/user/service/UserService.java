@@ -12,4 +12,15 @@ public interface UserService {
     void update(UserEntity userEntity) throws Exception;
 
     void delete(String id) throws Exception;
+
+    /**
+     * 根据登陆帐号获取用户信息
+     * @author chengjian
+     * @date 2019/10/16
+     * @param loginId
+     * @return com.spring.user.entity.UserEntity
+     */
+    UserEntity findByLoginId(String loginId)throws Exception;
+
+    void init()throws Exception;
 }

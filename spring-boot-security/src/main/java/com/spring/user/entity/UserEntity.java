@@ -30,7 +30,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "loginPwd", nullable = false, length = 20)
+    @Column(name = "loginPwd", nullable = false, length = 100)
     public String getLoginPwd() {
         return loginPwd;
     }
@@ -47,5 +47,15 @@ public class UserEntity {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id='" + id + '\'' +
+                ", loginId='" + loginId + '\'' +
+                ", loginPwd='" + loginPwd + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
     }
 }
